@@ -14,7 +14,7 @@ public class UnicornSpellerInterface : MonoBehaviour
         {
             //IP settings
             string ips = "127.0.0.1";
-            int port = 1000;
+            int port = 6969;
             IPAddress ip = IPAddress.Parse(ips);
 
             //Start listening for Unicorn Speller network messages
@@ -35,7 +35,7 @@ public class UnicornSpellerInterface : MonoBehaviour
     void Update()
     {
         string ips = "127.0.0.1";
-        int port = 1000;
+        int port = 6969;
         IPAddress ip = IPAddress.Parse(ips);
 
         SpellerReceiver r = new SpellerReceiver(ip, port);
