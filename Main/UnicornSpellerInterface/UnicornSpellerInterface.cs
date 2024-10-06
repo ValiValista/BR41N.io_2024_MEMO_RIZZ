@@ -50,6 +50,28 @@ public class UnicornSpellerInterface : MonoBehaviour
         Debug.Log(String.Format("Received BoardItem:\tName: {0}\tOutput Text: {1}", eventArgs.BoardItem.Name, eventArgs.BoardItem.OutputText));
 
         SpellerData = eventArgs.BoardItem.Name;
-        //Do something...
+        // Do something...
+
+        // Send SpellerData to previous function as text input
+        SendSpellerDataToPreviousFunction(SpellerData);
+    }
+
+    // Method to send SpellerData to the previous function as text input
+    private void SendSpellerDataToPreviousFunction(string data)
+    {
+        // Assuming the previous function is in another script (like UserInteractionHandler),
+        // and that function has a public method to receive the text input (like ReceiveTextInput).
+        // This will call the previous function and pass the SpellerData.
+
+        UserInteractionHandler interactionHandler = FindObjectOfType<UserInteractionHandler>();
+
+        if (interactionHandler != null)
+        {
+            interactionHandler.ReceiveTextInput(data);  // Pass SpellerData to the previous function
+        }
+        else
+        {
+            Debug.LogWarning("UserInteractionHandler not found.");
+        }
     }
 }
